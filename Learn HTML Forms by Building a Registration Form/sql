@@ -1,0 +1,21 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS registration_form;
+
+-- Use the created database
+USE registration_form;
+
+-- Create the users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    account_type ENUM('pa', 'ba') NOT NULL, -- 'pa' for Personal, 'ba' for Business
+    profile_picture VARCHAR(255),          -- Path to the uploaded file
+    age INT CHECK (age BETWEEN 13 AND 120),
+    referrer VARCHAR(50),
+    bio TEXT,
+    terms_and_conditions BOOLEAN NOT NULL DEFAULT 0, -- Ensure terms are accepted
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
