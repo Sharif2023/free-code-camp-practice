@@ -8,9 +8,9 @@
     $newPassword = password_hash($_POST['new-password'], PASSWORD_BCRYPT);
     $accountType = $_POST['account-type'];
     $profilePictureUpload = $_POST['file'];
-    $age = $_POST['age'] ?? NULL;
+    $age = isset($_POST['age']) ? $_POST['age']:NULL;
     $refferer = $_POST['referrer'];
-    $bio = $_POST['bio'];
+    $bio = isset($_POST['bio']) ? $_POST['bio']:'';
     $termsAndConditions = isset($_POST['terms-and-conditions']) ? 1: 0; // Convert checkbox to boolean
 
     //Database Connection
